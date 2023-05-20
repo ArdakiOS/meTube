@@ -17,19 +17,21 @@ class Fetcher {
         
         let dataTask = session.dataTask(with: url) { data, respons, error in
             guard let data = data, error == nil else {
-                
-                print(error?.localizedDescription)
                 return
-                
             }
-            print("data fetched")
             
-//            do{
-//                //
-//            }
-//            catch{
-//                //
-//            }
+            do{
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                
+                let result = try decoder.decode(ResponseModel.self, from: data)
+                dump(result)
+            }
+            catch{
+                print (error)
+            }
+            
+            
         }
         dataTask.resume()
     }
