@@ -35,7 +35,7 @@ class CustomTableViewCell: UITableViewCell {
     
     let imageV : UIImageView = {
         let imageV = UIImageView()
-        imageV.contentMode = .scaleAspectFit
+        imageV.contentMode = .scaleAspectFill
         imageV.clipsToBounds = true
         return imageV
     }()
@@ -61,10 +61,19 @@ class CustomTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        dateLable.text = nil
+        titleLable.text = nil
+        imageV.image = nil
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         stack.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height)
+//        imageV.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 300)
+//        titleLable.frame = CGRect(x: 0, y: 320 , width: contentView.bounds.width, height: 20)
+//        dateLable.frame = CGRect(x: 0, y: 340, width: contentView.bounds.width, height: 20)
     }
     
     func configure(_ v: Video){

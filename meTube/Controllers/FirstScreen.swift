@@ -58,13 +58,13 @@ extension FirstScreen : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as? CustomTableViewCell else {return UITableViewCell()}
         cell.configure(videos[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 370
+        return 400
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -83,11 +83,11 @@ extension FirstScreen : UITableViewDataSource, UITableViewDelegate {
         return 30
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextPage = VideoViewController()
-        let temp = videos[indexPath.row].title
-        nextPage.vidTitle = temp
+        nextPage.vid = videos[indexPath.row]
         navigationController?.pushViewController(nextPage, animated: true)
     }
+
 }
 
