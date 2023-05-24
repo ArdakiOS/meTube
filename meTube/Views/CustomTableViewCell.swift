@@ -47,9 +47,9 @@ class CustomTableViewCell: UITableViewCell {
         
         contentView.backgroundColor = .systemBackground
         
-//        contentView.addSubview(imageV)
-//        contentView.addSubview(titleLable)
-//        contentView.addSubview(dateLable)
+        //        contentView.addSubview(imageV)
+        //        contentView.addSubview(titleLable)
+        //        contentView.addSubview(dateLable)
         
         stack.addArrangedSubview(imageV)
         stack.addArrangedSubview(titleLable)
@@ -71,9 +71,9 @@ class CustomTableViewCell: UITableViewCell {
         super.layoutSubviews()
         
         stack.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height)
-//        imageV.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 300)
-//        titleLable.frame = CGRect(x: 0, y: 320 , width: contentView.bounds.width, height: 20)
-//        dateLable.frame = CGRect(x: 0, y: 340, width: contentView.bounds.width, height: 20)
+        //        imageV.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 300)
+        //        titleLable.frame = CGRect(x: 0, y: 320 , width: contentView.bounds.width, height: 20)
+        //        dateLable.frame = CGRect(x: 0, y: 340, width: contentView.bounds.width, height: 20)
     }
     
     func configure(_ v: Video){
@@ -84,6 +84,7 @@ class CustomTableViewCell: UITableViewCell {
         dateFormater.dateFormat = "EEEE, MMM d, yyyy"
         dateLable.text = dateFormater.string(from: v.published)
     }
+    
     
     
 }

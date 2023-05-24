@@ -8,7 +8,6 @@
 import UIKit
 
 class FirstScreen: UIViewController, ModelDelegate {
-
     
     var fetch = Fetcher()
     var videos = [Video]()
@@ -18,7 +17,7 @@ class FirstScreen: UIViewController, ModelDelegate {
         return tableView
     }()
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,7 @@ class FirstScreen: UIViewController, ModelDelegate {
         fetch.getVideos()
         
     }
-
+    
     func videosFetched(_ video: [Video]) {
         self.videos = video
         
@@ -46,7 +45,7 @@ class FirstScreen: UIViewController, ModelDelegate {
     }
     
     
-
+    
 }
 
 extension FirstScreen : UITableViewDataSource, UITableViewDelegate {
@@ -88,6 +87,7 @@ extension FirstScreen : UITableViewDataSource, UITableViewDelegate {
         nextPage.vid = videos[indexPath.row]
         navigationController?.pushViewController(nextPage, animated: true)
     }
-
+    
+    
 }
 
